@@ -2,7 +2,12 @@ import express from "express";
 import Anthropic from "@anthropic-ai/sdk";
 import dotenv from "dotenv";
 import path from "path";
+import dns from "node:dns";
 import { fileURLToPath } from "url";
+
+// Some hosts (e.g. Render's free tier) fail outbound HTTPS over IPv6;
+// prefer IPv4 so calls to the Anthropic API don't intermittently fail.
+dns.setDefaultResultOrder("ipv4first");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
