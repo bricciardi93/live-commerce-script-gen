@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gerador de Roteiros de Live Commerce</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="app-header">
+    <h1>Gerador de Roteiros de Live Commerce</h1>
+    <p>Monte o roteiro da sua próxima live de vendas (Shopee, TikTok Shop, Mercado Livre e outras) em poucos minutos.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <form id="script-form">
+
+        <div class="field">
+          <label for="business-description">Sobre o seu negócio / marca</label>
+          <textarea
+            id="business-description"
+            rows="3"
+            placeholder="Ex: agropecuária, público rural, tom direto e de confiança. Ou: moda feminina jovem, tom animado e descontraído."
+            required
+          ></textarea>
+          <small>Descreva o tipo de negócio, o público-alvo e o tom de voz desejado.</small>
+        </div>
+
+        <div class="field">
+          <label for="language">Idioma do roteiro</label>
+          <select id="language">
+            <option value="pt-BR" selected>Português (Brasil)</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label>Produtos</label>
+            <button type="button" id="add-product" class="btn btn-secondary">+ Adicionar produto</button>
+          </div>
+          <div id="products-list"></div>
+        </div>
+
+        <button type="submit" id="generate-btn" class="btn btn-primary btn-block">
+          Gerar roteiro
+        </button>
+      </form>
+    </section>
+
+    <section class="panel result-panel">
+      <div class="result-header">
+        <h2>Roteiro gerado</h2>
+        <div class="result-actions" id="result-actions" hidden>
+          <button type="button" id="copy-btn" class="btn btn-secondary">Copiar</button>
+          <button type="button" id="export-btn" class="btn btn-secondary">Exportar .txt</button>
+        </div>
+      </div>
+
+      <div id="result-empty" class="result-empty">
+        Preencha os dados ao lado e clique em <strong>Gerar roteiro</strong> para ver o resultado aqui.
+      </div>
+
+      <div id="result-loading" class="result-loading" hidden>
+        <div class="spinner"></div>
+        <span>Gerando roteiro com a Claude…</span>
+      </div>
+
+      <div id="result-error" class="result-error" hidden></div>
+
+      <article id="result-content" class="result-content" hidden></article>
+    </section>
+  </main>
+</div>
+
+<template id="product-row-template">
+  <div class="product-row">
+    <div class="product-row-header">
+      <span class="product-index"></span>
+      <button type="button" class="btn btn-remove remove-product" title="Remover produto">✕</button>
+    </div>
+    <div class="product-row-fields">
+      <input type="text" class="product-name" placeholder="Nome do produto" required />
+      <input type="text" class="product-price" placeholder="Preço (ex: R$ 89,90)" required />
+    </div>
+    <textarea class="product-features" rows="2" placeholder="Características / diferenciais (texto livre)"></textarea>
+  </div>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>

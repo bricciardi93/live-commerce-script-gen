@@ -1,0 +1,16 @@
+{
+  "name": "live-commerce-script-gen",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gerador de roteiros de live commerce usando a API da Anthropic (Claude)",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
